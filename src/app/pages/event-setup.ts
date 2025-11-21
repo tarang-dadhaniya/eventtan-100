@@ -963,6 +963,157 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                 *ngIf="currentTab === 'features'"
                 class="bg-white rounded shadow-md border border-[#E9E9E9] p-4 md:p-6 lg:p-8"
               >
+                <!-- Selected Section -->
+                <div class="mb-8">
+                  <h3 class="text-base font-medium text-[#686868] mb-6">
+                    Selected
+                  </h3>
+
+                  <!-- Selected Features Container -->
+                  <div
+                    class="relative w-full rounded border border-dashed border-[#CED4DA] bg-white"
+                    style="min-height: 309px;"
+                  >
+                    <!-- Selected Feature Cards -->
+                    <div
+                      class="absolute top-8 left-8 flex flex-wrap gap-6"
+                      *ngIf="activeFeatures.length > 0"
+                    >
+                      <div
+                        *ngFor="let featureId of activeFeatures"
+                        class="flex flex-col items-center gap-2 p-4 w-[120px] h-[120px] rounded border border-[#049AD0] shadow-[0_4px_15px_rgba(30,30,45,0.05)] bg-white transition-all hover:shadow-md"
+                      >
+                        <div class="relative w-full flex-1 flex items-center justify-center">
+                          <svg
+                            class="w-8 h-8"
+                            viewBox="0 0 32 32"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            *ngIf="featureId === 'schedule'"
+                          >
+                            <path
+                              d="M28.25 2.5H26.75V0H24.25V2.5H7.75V0H5.25V2.5H3.75C1.68225 2.5 0 4.18225 0 6.25V28.25C0 30.3177 1.68225 32 3.75 32H28.25C30.3177 32 32 30.3177 32 28.25V6.25C32 4.18225 30.3177 2.5 28.25 2.5ZM29.5 28.25C29.5 28.9393 28.9393 29.5 28.25 29.5H3.75C3.06075 29.5 2.5 28.9393 2.5 28.25V11.75H29.5V28.25ZM29.5 9.25H2.5V6.25C2.5 5.56075 3.06075 5 3.75 5H5.25V7.5H7.75V5H24.25V7.5H26.75V5H28.25C28.9393 5 29.5 5.56075 29.5 6.25V9.25Z"
+                              fill="#049AD0"
+                            />
+                            <path d="M7.25 14.375H4.75V16.875H7.25V14.375Z" fill="#049AD0"/>
+                            <path d="M12.25 14.375H9.75V16.875H12.25V14.375Z" fill="#049AD0"/>
+                            <path d="M17.25 14.375H14.75V16.875H17.25V14.375Z" fill="#049AD0"/>
+                            <path d="M22.25 14.375H19.75V16.875H22.25V14.375Z" fill="#049AD0"/>
+                            <path d="M27.25 14.375H24.75V16.875H27.25V14.375Z" fill="#049AD0"/>
+                            <path d="M7.25 19.375H4.75V21.875H7.25V19.375Z" fill="#049AD0"/>
+                            <path d="M12.25 19.375H9.75V21.875H12.25V19.375Z" fill="#049AD0"/>
+                            <path d="M17.25 19.375H14.75V21.875H17.25V19.375Z" fill="#049AD0"/>
+                            <path d="M22.25 19.375H19.75V21.875H22.25V19.375Z" fill="#049AD0"/>
+                            <path d="M7.25 24.375H4.75V26.875H7.25V24.375Z" fill="#049AD0"/>
+                            <path d="M12.25 24.375H9.75V26.875H12.25V24.375Z" fill="#049AD0"/>
+                            <path d="M17.25 24.375H14.75V26.875H17.25V24.375Z" fill="#049AD0"/>
+                            <path d="M22.25 24.375H19.75V26.875H22.25V24.375Z" fill="#049AD0"/>
+                            <path d="M27.25 19.375H24.75V21.875H27.25V19.375Z" fill="#049AD0"/>
+                          </svg>
+                          <button
+                            class="absolute -top-2 -right-2 p-1"
+                            (click)="toggleFeature(featureId)"
+                            title="Remove feature"
+                          >
+                            <svg
+                              class="w-5 h-5"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                                stroke="#049AD0"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <path
+                                d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z"
+                                stroke="#049AD0"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <path
+                                d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z"
+                                stroke="#049AD0"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                        <span
+                          class="text-base font-medium text-[#049AD0] text-center leading-tight"
+                        >
+                          {{ getFeatureLabel(featureId) }}
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Drag to Add Message -->
+                    <div
+                      class="absolute left-1/2 bottom-1/2 -translate-x-1/2 translate-y-1/2 flex items-center gap-2"
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5 9L2 12L5 15"
+                          stroke="#686868"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M9 5L12 2L15 5"
+                          stroke="#686868"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M15 19L12 22L9 19"
+                          stroke="#686868"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M19 9L22 12L19 15"
+                          stroke="#686868"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M2 12H22"
+                          stroke="#686868"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M12 2V22"
+                          stroke="#686868"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      <span class="text-[#878A99] text-lg font-semibold whitespace-nowrap">
+                        Drag to add & sort features
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- Available Label -->
                 <h3 class="text-base font-medium text-[#686868] mb-6">
                   Available
