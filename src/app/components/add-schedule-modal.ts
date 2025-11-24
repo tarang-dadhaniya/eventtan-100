@@ -20,7 +20,7 @@ import { FormsModule } from "@angular/forms";
       >
         <!-- Fixed Header -->
         <div
-          class="flex items-center justify-between px-8 py-6 border-b border-gray-200 flex-shrink-0"
+          class="flex items-center justify-between px-8 py-4 border-b border-gray-200 flex-shrink-0"
         >
           <h2 class="text-[22px] font-medium text-[#3F4254]">Add Schedule</h2>
           <button
