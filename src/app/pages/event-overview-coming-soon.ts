@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-event-overview-coming-soon',
+  selector: "app-event-overview-coming-soon",
   standalone: true,
   imports: [CommonModule],
   template: `
     <div class="flex h-screen overflow-hidden bg-main-bg">
       <!-- Sidebar -->
-      <div class="hidden lg:flex lg:flex-col lg:w-64 bg-[#1a1d2b] border-r border-[#2d3142]">
+      <div
+        class="hidden lg:flex lg:flex-col lg:w-64 bg-[#1a1d2b] border-r border-[#2d3142]"
+      >
         <div class="px-6 py-8">
           <h1 class="text-2xl font-bold text-white tracking-wider">Eventtan</h1>
         </div>
@@ -44,12 +46,18 @@ import { Router } from '@angular/router';
 
       <!-- Main Content -->
       <main class="flex-1 flex flex-col overflow-hidden">
-        <header class="h-24 bg-white border-b border-[#ECECEC] px-4 lg:px-8 flex items-center">
+        <header
+          class="h-24 bg-white border-b border-[#ECECEC] px-4 lg:px-8 flex items-center"
+        >
           <h1 class="text-2xl font-bold text-[#181C32]">Event Overview</h1>
         </header>
 
-        <div class="flex-1 overflow-auto flex items-center justify-center p-4 lg:p-8">
-          <div class="max-w-2xl w-full bg-white rounded-2xl shadow-lg p-8 lg:p-12 text-center border border-[#E9E9E9]">
+        <div
+          class="flex-1 overflow-auto flex items-center justify-center p-4 lg:p-8"
+        >
+          <div
+            class="max-w-2xl w-full bg-white rounded-2xl shadow-lg p-8 lg:p-12 text-center border border-[#E9E9E9]"
+          >
             <div class="mb-6">
               <svg
                 class="w-24 h-24 mx-auto text-primary-blue"
@@ -71,7 +79,8 @@ import { Router } from '@angular/router';
             </h2>
 
             <p class="text-lg text-form-gray mb-8">
-              The Event Overview feature is coming soon. We're working hard to bring you an enhanced experience.
+              The Event Overview feature is coming soon. We're working hard to
+              bring you an enhanced experience.
             </p>
 
             <button
@@ -85,7 +94,7 @@ import { Router } from '@angular/router';
       </main>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class EventOverviewComingSoonComponent {
   constructor(private router: Router) {}
@@ -101,11 +110,11 @@ export class EventOverviewComingSoonComponent {
   }
 
   onLogout() {
-    this.router.navigate(['/']);
+    this.router.navigate(["/"]);
   }
 
   private getEventIdFromUrl(): string {
-    const urlParts = window.location.pathname.split('/');
-    return urlParts[2] || '';
+    const urlParts = window.location.pathname.split("/");
+    return urlParts[2] || "";
   }
 }

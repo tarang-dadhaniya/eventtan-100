@@ -1818,7 +1818,7 @@ export class EventSetupComponent implements OnInit {
   bannerPreview: string | null = null;
 
   isScheduleModalOpen = false;
-  eventId: string = '';
+  eventId: string = "";
   schedules: Schedule[] = [];
   editMode = false;
   editingSchedule: any = null;
@@ -1985,7 +1985,7 @@ export class EventSetupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eventId = this.route.snapshot.paramMap.get('id') || '';
+    this.eventId = this.route.snapshot.paramMap.get("id") || "";
 
     this.route.queryParams.subscribe((params) => {
       if (params["eventName"]) {
@@ -2279,7 +2279,10 @@ export class EventSetupComponent implements OnInit {
 
   onScheduleSave(scheduleData: any) {
     if (this.editMode && this.editingSchedule) {
-      this.scheduleService.updateSchedule(this.editingSchedule.id, scheduleData);
+      this.scheduleService.updateSchedule(
+        this.editingSchedule.id,
+        scheduleData,
+      );
     } else {
       this.scheduleService.addSchedule(this.eventId, scheduleData);
     }
@@ -2298,14 +2301,14 @@ export class EventSetupComponent implements OnInit {
   }
 
   deleteSchedule(id: string) {
-    if (confirm('Are you sure you want to delete this schedule?')) {
+    if (confirm("Are you sure you want to delete this schedule?")) {
       this.scheduleService.deleteSchedule(id);
       this.loadSchedules();
     }
   }
 
   formatDate(dateString: string): string {
-    if (!dateString) return '';
+    if (!dateString) return "";
     const date = new Date(dateString);
     const day = date.getDate();
     const month = date.getMonth() + 1;
@@ -2314,17 +2317,17 @@ export class EventSetupComponent implements OnInit {
   }
 
   formatTime(timeString: string): string {
-    if (!timeString) return '';
-    const [hours, minutes] = timeString.split(':');
+    if (!timeString) return "";
+    const [hours, minutes] = timeString.split(":");
     const hour = parseInt(hours, 10);
-    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const ampm = hour >= 12 ? "PM" : "AM";
     const displayHour = hour % 12 || 12;
-    return `${displayHour.toString().padStart(2, '0')}:${minutes} ${ampm}`;
+    return `${displayHour.toString().padStart(2, "0")}:${minutes} ${ampm}`;
   }
 
   getInitials(name: string): string {
-    if (!name) return '';
-    const parts = name.split(' ');
+    if (!name) return "";
+    const parts = name.split(" ");
     if (parts.length >= 2) {
       return (parts[0][0] + parts[1][0]).toUpperCase();
     }
