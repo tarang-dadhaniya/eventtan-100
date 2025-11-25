@@ -75,14 +75,14 @@ import { FormsModule } from "@angular/forms";
                   *ngIf="!formData.companyLogo"
                   width="60"
                   height="60"
-                  viewBox="0 0 60 60"
+                  viewBox="0 0 100 100"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M30 7.5C16.215 7.5 5 18.715 5 32.5C5 46.285 16.215 57.5 30 57.5C43.785 57.5 55 46.285 55 32.5C55 18.715 43.785 7.5 30 7.5ZM30 15C34.14 15 37.5 18.36 37.5 22.5C37.5 26.64 34.14 30 30 30C25.86 30 22.5 26.64 22.5 22.5C22.5 18.36 25.86 15 30 15ZM30 50C24 50 18.675 47.025 15 42.525C15.075 37.875 24.375 35.25 30 35.25C35.625 35.25 44.925 37.875 45 42.525C41.325 47.025 36 50 30 50Z"
-                    fill="#686868"
-                  />
+                  <rect x="15" y="25" width="70" height="55" rx="6" fill="#5B7285" />
+                  <rect x="35" y="15" width="30" height="20" rx="3" fill="#5B7285" />
+                  <rect x="70" y="28" width="12" height="10" rx="2" fill="#6FB3A5" />
+                  <circle cx="50" cy="52" r="12" fill="none" stroke="white" stroke-width="3" />
                 </svg>
               </div>
               <button
