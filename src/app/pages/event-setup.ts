@@ -3053,10 +3053,11 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                         </svg>
                         <span>Add Image</span>
                       </button>
+                      </div>
                     </div>
 
                     <!-- Gallery Grid -->
-                    <div class="p-6 md:p-8">
+                    <div class="p-6">
                       <div
                         *ngIf="galleryImages.length === 0"
                         class="flex flex-col items-center justify-center py-16 text-center"
