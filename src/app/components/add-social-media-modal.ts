@@ -20,7 +20,7 @@ import { FormsModule } from "@angular/forms";
         <div class="flex-shrink-0 px-[30px] py-[30px]">
           <div class="flex items-center justify-between">
             <h2 class="text-[22px] font-medium text-[#3F4254]">
-              Add Social Media
+              {{ editMode ? 'Edit Social Media' : 'Add Social Media' }}
             </h2>
             <button
               type="button"
