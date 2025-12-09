@@ -58,8 +58,8 @@ import { FormsModule } from "@angular/forms";
         <!-- Body -->
         <form class="flex-1 flex flex-col min-h-0" (ngSubmit)="onSubmit()">
           <div class="flex-1 overflow-y-auto px-[30px] pb-6 min-h-0">
-            <!-- Social Media Dropdown -->
-            <div class="mb-[30px]">
+            <!-- Social Media Dropdown (Only shown in Add mode) -->
+            <div class="mb-[30px]" *ngIf="!editMode">
               <label class="block text-base font-medium text-[#212529] mb-2">
                 Social Media
               </label>
@@ -187,11 +187,12 @@ import { FormsModule } from "@angular/forms";
             <!-- URL Section -->
             <div
               *ngIf="
-                formData.socialMedia.blogRss || formData.socialMedia.facebook
+                editMode || formData.socialMedia.blogRss || formData.socialMedia.facebook
               "
             >
               <label
-                class="block text-base font-medium text-[#212529] mb-[31px]"
+                class="block text-base font-medium text-[#212529]"
+                [class.mb-[31px]]="!editMode"
               >
                 URL
               </label>
