@@ -148,82 +148,90 @@ import { GalleryImage } from "../services/image-gallery.service";
               <label class="block text-base font-medium text-[#212529] mb-3">
                 Product Image
               </label>
-              
-              <!-- Uploaded Images Gallery -->
-              <div
-                *ngIf="productImagePreviews.length > 0"
-                class="mb-4 p-4 border-2 border-dashed border-[#B9BBBC] rounded-[4px] bg-white"
-              >
-                <div class="flex flex-wrap gap-4">
-                  <div
-                    *ngFor="let image of productImagePreviews; let i = index"
-                    class="relative group"
-                  >
-                    <img
-                      [src]="image"
-                      alt="Product image preview"
-                      class="w-20 h-20 object-cover rounded-[4px]"
-                    />
-                    <!-- Delete Button -->
-                    <button
-                      type="button"
-                      (click)="removeProductImage(i)"
-                      class="absolute -top-2 -right-2 w-5 h-5 bg-white border border-[#878A99] rounded-full flex items-center justify-center hover:bg-red-50 transition-colors shadow-sm"
-                      aria-label="Remove image"
-                    >
-                      <svg
-                        width="6"
-                        height="6"
-                        viewBox="0 0 6 6"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g clip-path="url(#clip0_remove)">
-                          <path
-                            d="M0.30853 6.00002C0.229495 6.00002 0.15046 5.96995 0.0904116 5.90945C-0.0301372 5.7889 -0.0301372 5.59346 0.0904116 5.47292L5.47292 0.0904116C5.59346 -0.0301372 5.7889 -0.0301372 5.90945 0.0904116C6.03 0.21096 6.03 0.4064 5.90945 0.527024L0.527024 5.90945C0.466524 5.96958 0.387489 6.00002 0.30853 6.00002Z"
-                            fill="#686868"
-                          />
-                          <path
-                            d="M5.69141 6.00002C5.61238 6.00002 5.53342 5.96995 5.47329 5.90945L0.0904116 0.527024C-0.0301372 0.4064 -0.0301372 0.21096 0.0904116 0.0904116C0.21096 -0.0301372 0.4064 -0.0301372 0.527024 0.0904116L5.90945 5.47292C6.03 5.59346 6.03 5.7889 5.90945 5.90945C5.84895 5.96958 5.76999 6.00002 5.69141 6.00002Z"
-                            fill="#686868"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_remove">
-                            <rect width="6" height="6" fill="white" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
 
-              <!-- Drag and Drop Upload Area -->
+              <!-- Drag and Drop Upload Area with Images -->
               <div
-                class="w-full border-2 border-dashed border-[#B9BBBC] rounded-[4px] p-8 text-center cursor-pointer hover:border-[#009FD8] transition-colors flex flex-col items-center justify-center min-h-[120px]"
+                class="w-full border-2 border-dashed border-[#B9BBBC] rounded-[4px] p-6 text-center cursor-pointer hover:border-[#009FD8] transition-colors flex flex-col items-center justify-center"
+                [class.min-h-[120px]]="productImagePreviews.length === 0"
+                [class.min-h-fit]="productImagePreviews.length > 0"
                 (click)="productImageInput.click()"
                 (dragover)="onDragOver($event)"
                 (dragleave)="onDragLeave($event)"
                 (drop)="onDrop($event)"
                 [class.border-[#009FD8] bg-blue-50]="isDragging"
               >
-                <svg
-                  class="w-8 h-8 text-[#878A99] mb-3"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <!-- Uploaded Images Gallery (shown when images exist) -->
+                <div
+                  *ngIf="productImagePreviews.length > 0"
+                  class="w-full"
                 >
-                  <path
-                    d="M25.0037 27.6421H19.8316H18.4389H18.1381V20.7046H20.407C20.9824 20.7046 21.3224 20.0507 20.9824 19.5799L16.5689 13.4729C16.2877 13.0805 15.7058 13.0805 15.4246 13.4729L11.011 19.5799C10.671 20.0507 11.0045 20.7046 11.5864 20.7046H13.8553V27.6421H13.5546H12.1618H6.16592C2.73314 27.4524 0 24.242 0 20.7634C0 18.3638 1.30119 16.2714 3.23008 15.1402C3.05354 14.6629 2.96199 14.1529 2.96199 13.6167C2.96199 11.1647 4.9432 9.18353 7.39518 9.18353C7.92481 9.18353 8.43482 9.27507 8.91214 9.45162C10.331 6.44385 13.3911 4.35803 16.9481 4.35803C21.5513 4.36457 25.3437 7.88889 25.7752 12.3809C29.3126 12.989 32 16.2649 32 19.9723C32 23.9347 28.9138 27.3674 25.0037 27.6421Z"
-                    fill="#878A99"
-                  />
-                </svg>
-                <p class="text-[#212529] font-medium text-base">
-                  Drop Images here or click to upload.
-                </p>
+                  <div class="flex flex-wrap gap-4 justify-start">
+                    <div
+                      *ngFor="let image of productImagePreviews; let i = index"
+                      class="relative group"
+                    >
+                      <img
+                        [src]="image"
+                        alt="Product image preview"
+                        class="w-24 h-24 object-cover rounded-[4px]"
+                      />
+                      <!-- Delete Button -->
+                      <button
+                        type="button"
+                        (click)="removeProductImage(i); $event.stopPropagation()"
+                        class="absolute -top-3 -right-3 w-6 h-6 bg-white border border-[#878A99] rounded-full flex items-center justify-center hover:bg-red-50 transition-colors shadow-md"
+                        aria-label="Remove image"
+                      >
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clip-path="url(#clip0_remove)">
+                            <path
+                              d="M0.620965 12C0.462896 12 0.304826 11.9399 0.184729 11.8189C-0.0563682 11.5778 -0.0563682 11.1869 0.184729 10.9458L10.9497 0.180823C11.1908 -0.0602744 11.5817 -0.0602744 11.8228 0.180823C12.0639 0.421921 12.0639 0.8128 11.8228 1.05405L1.05795 11.8189C0.936954 11.9392 0.778884 12 0.620965 12Z"
+                              fill="#686868"
+                            />
+                            <path
+                              d="M11.3867 12C11.2287 12 11.0707 11.9399 10.9505 11.8189L0.184729 1.05405C-0.0563682 0.8128 -0.0563682 0.421921 0.184729 0.180823C0.425827 -0.0602744 0.816707 -0.0602744 1.05795 0.180823L11.8228 10.9458C12.0639 11.1869 12.0639 11.5778 11.8228 11.8189C11.7018 11.9392 11.5439 12 11.3867 12Z"
+                              fill="#686868"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_remove">
+                              <rect width="12" height="12" fill="white" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Empty State (shown when no images) -->
+                <div
+                  *ngIf="productImagePreviews.length === 0"
+                  class="flex flex-col items-center justify-center"
+                >
+                  <svg
+                    class="w-8 h-8 text-[#878A99] mb-3"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M25.0037 27.6421H19.8316H18.4389H18.1381V20.7046H20.407C20.9824 20.7046 21.3224 20.0507 20.9824 19.5799L16.5689 13.4729C16.2877 13.0805 15.7058 13.0805 15.4246 13.4729L11.011 19.5799C10.671 20.0507 11.0045 20.7046 11.5864 20.7046H13.8553V27.6421H13.5546H12.1618H6.16592C2.73314 27.4524 0 24.242 0 20.7634C0 18.3638 1.30119 16.2714 3.23008 15.1402C3.05354 14.6629 2.96199 14.1529 2.96199 13.6167C2.96199 11.1647 4.9432 9.18353 7.39518 9.18353C7.92481 9.18353 8.43482 9.27507 8.91214 9.45162C10.331 6.44385 13.3911 4.35803 16.9481 4.35803C21.5513 4.36457 25.3437 7.88889 25.7752 12.3809C29.3126 12.989 32 16.2649 32 19.9723C32 23.9347 28.9138 27.3674 25.0037 27.6421Z"
+                      fill="#878A99"
+                    />
+                  </svg>
+                  <p class="text-[#212529] font-medium text-base">
+                    Drop Images here or click to upload.
+                  </p>
+                </div>
               </div>
               <input
                 #productImageInput
