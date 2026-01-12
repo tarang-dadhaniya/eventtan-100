@@ -68,7 +68,7 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
       ></app-event-detail-sidebar>
 
       <main class="flex-1 flex flex-col overflow-hidden">
-        <header class="h-24 bg-white border-b border-[#ECECEC] px-4 lg:px-8">
+        <header class="h-20 sm:h-24 bg-white border-b border-[#ECECEC] px-2 sm:px-4 md:px-6 lg:px-8">
           <div class="h-full flex items-center gap-4">
             <button
               class="w-11 h-11 bg-primary-blue rounded flex items-center justify-center lg:hidden hover:bg-[#0385b5] transition-colors"
