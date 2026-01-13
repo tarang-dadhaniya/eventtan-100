@@ -3567,6 +3567,15 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
       (submit)="onSocialMediaSave($event)"
     ></app-add-social-media-modal>
 
+    <!-- Add Testimonials Modal -->
+    <app-add-testimonials-modal
+      [isOpen]="isTestimonialsModalOpen"
+      [editMode]="editModeTestimonials"
+      [testimonialData]="editingTestimonial"
+      (close)="closeTestimonialsModal()"
+      (submit)="onTestimonialsSave($event)"
+    ></app-add-testimonials-modal>
+
     <!-- Add Image Gallery Modal -->
     <app-add-image-gallery-modal
       [isOpen]="isImageGalleryModalOpen"
