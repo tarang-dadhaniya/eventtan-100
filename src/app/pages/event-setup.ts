@@ -4589,14 +4589,20 @@ export class EventSetupComponent implements OnInit {
   }
 
   onTestimonialsSave(testimonialData: any) {
+    // Validate required fields to prevent empty entries
+    if (!testimonialData.firstName?.trim() || !testimonialData.company?.trim() || !testimonialData.designation?.trim()) {
+      console.warn('Testimonial data incomplete, cannot save.');
+      return;
+    }
+
     const formData: TestimonialFormData = {
-      firstName: testimonialData.firstName || '',
-      lastName: testimonialData.lastName || '',
-      company: testimonialData.company || '',
-      designation: testimonialData.designation || '',
+      firstName: (testimonialData.firstName || '').trim(),
+      lastName: (testimonialData.lastName || '').trim(),
+      company: (testimonialData.company || '').trim(),
+      designation: (testimonialData.designation || '').trim(),
       isExhibitor: testimonialData.isExhibitor || false,
-      testimonialsFor: testimonialData.testimonialsFor || '',
-      message: testimonialData.message || '',
+      testimonialsFor: (testimonialData.testimonialsFor || '').trim(),
+      message: (testimonialData.message || '').trim(),
       profileImage: testimonialData.profileImage || null,
       profilePreview: testimonialData.profilePreview || null,
     };
