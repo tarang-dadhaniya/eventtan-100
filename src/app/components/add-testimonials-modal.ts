@@ -531,7 +531,7 @@ import { FormsModule } from "@angular/forms";
     `,
   ],
 })
-export class AddTestimonialsModalComponent {
+export class AddTestimonialsModalComponent implements OnChanges {
   @Input() isOpen = false;
   @Input() editMode = false;
   @Input() set testimonialData(data: any) {
